@@ -1,10 +1,10 @@
-model_name: Llama2_WizardLM_7B_Uncensored
-base_model: TheBloke/Llama-2-7B-fp16
+model_name: OpenOpenOrca-3B-V2
+base_model: openlm-research/open_llama_3b_v2
 model_family: llama  # if unspecified will use AutoModelForCausalLM/AutoTokenizer
-model_context_window: 4096  # if unspecified will use tokenizer.model_max_length
+model_context_window: 2048  # if unspecified will use tokenizer.model_max_length
 data:
   type: vicuna
-  dataset: ehartford/WizardLM_evol_instruct_V2_196k_unfiltered_merged_split  # HuggingFace hub
+  dataset: Open-Orca/OpenOrca  # HuggingFace hub
 lora:
   r: 8
   lora_alpha: 32
