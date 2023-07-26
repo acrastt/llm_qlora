@@ -1,10 +1,10 @@
-model_name: llama2_7b_chat_uncensored
+model_name: Llama2_WizardLM_7B_Uncensored.yaml
 base_model: TheBloke/Llama-2-7B-fp16
 model_family: llama  # if unspecified will use AutoModelForCausalLM/AutoTokenizer
 model_context_window: 4096  # if unspecified will use tokenizer.model_max_length
 data:
   type: vicuna
-  dataset: ehartford/wizard_vicuna_70k_unfiltered  # HuggingFace hub
+  dataset: ehartford/WizardLM_evol_instruct_V2_196k_unfiltered_merged_split  # HuggingFace hub
 lora:
   r: 8
   lora_alpha: 32
