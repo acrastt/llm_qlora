@@ -1,4 +1,4 @@
-model_name: OpenOpenOrca-3B-V2
+model_name: OOO-3B
 base_model: openlm-research/open_llama_3b_v2
 model_family: llama  # if unspecified will use AutoModelForCausalLM/AutoTokenizer
 model_context_window: 2048  # if unspecified will use tokenizer.model_max_length
