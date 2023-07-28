@@ -1,10 +1,10 @@
-model_name: OpenWizard-3B
+model_name: open_llama_3b_v2_lima
 base_model: openlm-research/open_llama_3b_v2
 model_family: llama  # if unspecified will use AutoModelForCausalLM/AutoTokenizer
 model_context_window: 2048  # if unspecified will use tokenizer.model_max_length
 data:
   type: vicuna
-  dataset: WizardLM/WizardLM_evol_instruct_V2_196k  # HuggingFace hub
+  dataset: GAIR/lima  # HuggingFace hub
 lora:
   r: 8
   lora_alpha: 32
