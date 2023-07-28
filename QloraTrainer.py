@@ -78,7 +78,6 @@ class QloraTrainer:
             model=model,
             train_dataset=data["train"],
             args=transformers.TrainingArguments(
-                save_steps = 500
                 per_device_train_batch_size=config_dict["batch_size"],
                 gradient_accumulation_steps=config_dict["gradient_accumulation_steps"],
                 warmup_steps=config_dict["warmup_steps"],
