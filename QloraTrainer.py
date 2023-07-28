@@ -73,9 +73,6 @@ class QloraTrainer:
 
         print("Start training")
       
-        checkpoint_callback = TrainerCheckpointCallback(
-          filepath=f"{self.config['checkpoint_dir']}/ckpt_{{step}}") 
-      
         config_dict = self.config["trainer"]
         trainer = transformers.Trainer(
             model=model,
@@ -95,16 +92,11 @@ class QloraTrainer:
             data_collator=transformers.DataCollatorForLanguageModeling(self.tokenizer, mlm=False),
         )
           
-        def save_checkpoint(signum, frame):
-          trainer.save_model(f"{self.config['checkpoint_dir']}/sigterm_ckpt")
-          
         signal.signal(signal.SIGTERM, save_checkpoint)
       
         model.config.use_cache = False  # silence the warnings. Please re-enable for inference!
         trainer.train()
-
-        model_save_path = f"{self.config['model_output_dir']}/{self.config['model_name']}_adapter"
-        trainer.save_model(model_save_path)
+      
         self.adapter_model = model
         print(f"Training complete, adapter model saved in {model_save_path}")
 
