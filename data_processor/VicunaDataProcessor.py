@@ -28,13 +28,13 @@ class VicunaDataProcessor(DataProcessor):
     def _generate_prompt(self, convo: list, eos_token: str) -> str:
         convo_text = ""
         for turn in convo:
-            entity = turn["from"]
-            value = turn["value"]
+            entity = turn["turn"]
+            value = turn["content"]
 
             if entity == "human":
                 convo_text += "### HUMAN:\n"
                 end_token = ""
-            elif entity == "gpt":
+            elif entity == "model":
                 convo_text += "### RESPONSE:\n"
                 end_token = eos_token  # LLM should stop its output after the response
             else:
