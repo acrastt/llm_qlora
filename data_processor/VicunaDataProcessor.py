@@ -34,7 +34,7 @@ class VicunaDataProcessor(DataProcessor):
             if entity == "human":
                 convo_text += "### HUMAN:\n"
                 end_token = ""
-            elif entity == "model":
+            elif entity == "gpt":
                 convo_text += "### RESPONSE:\n"
                 end_token = eos_token  # LLM should stop its output after the response
             else:
