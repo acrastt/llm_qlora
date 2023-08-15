@@ -1,10 +1,10 @@
-model_name: open_llama_3b_v2_lima
+model_name: EverythingLM-3B
 base_model: openlm-research/open_llama_3b_v2
 model_family: llama  # if unspecified will use AutoModelForCausalLM/AutoTokenizer
 model_context_window: 2048  # if unspecified will use tokenizer.model_max_length
 data:
   type: vicuna
-  dataset: GAIR/lima  # HuggingFace hub
+  dataset: totally-not-an-llm/everything-sharegptformat-morecleaned  # HuggingFace hub
 lora:
   r: 8
   lora_alpha: 32
