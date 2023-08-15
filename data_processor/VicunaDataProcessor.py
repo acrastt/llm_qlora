@@ -28,8 +28,8 @@ class VicunaDataProcessor(DataProcessor):
     def _generate_prompt(self, convo: list, eos_token: str) -> str:
         convo_text = ""
         for turn in convo:
-            entity = turn["turn"]
-            value = turn["content"]
+            entity = turn["from"]
+            value = turn["value"]
 
             if entity == "human":
                 convo_text += "### HUMAN:\n"
