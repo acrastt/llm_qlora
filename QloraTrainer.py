@@ -5,6 +5,7 @@ from peft import (LoraConfig, PeftModel, get_peft_model,
 from transformers import (AutoModelForCausalLM, AutoTokenizer,
                           BitsAndBytesConfig, LlamaForCausalLM, LlamaTokenizer)
 
+from data_processor.OrcaDataProcessor import OrcaDataProcessor
 from data_processor.RawTextDataProcessor import RawTextDataProcessor
 from data_processor.VicunaDataProcessor import VicunaDataProcessor
 
@@ -72,7 +73,6 @@ class QloraTrainer:
         data = self.data_processor.get_data()
 
         print("Start training")
-      
         config_dict = self.config["trainer"]
         trainer = transformers.Trainer(
             model=model,
@@ -87,15 +87,15 @@ class QloraTrainer:
                 logging_steps=config_dict["logging_steps"],
                 output_dir=self.config["trainer_output_dir"],
                 report_to="tensorboard",
+                #optim="adamw"
             ),
             data_collator=transformers.DataCollatorForLanguageModeling(self.tokenizer, mlm=False),
         )
-          
-        signal.signal(signal.SIGTERM, save_checkpoint)
-      
         model.config.use_cache = False  # silence the warnings. Please re-enable for inference!
         trainer.train()
-      
+
+        model_save_path = f"{self.config['model_output_dir']}/{self.config['model_name']}_adapter"
+        trainer.save_model(model_save_path)
         self.adapter_model = model
         print(f"Training complete, adapter model saved in {model_save_path}")
 
@@ -138,6 +138,8 @@ class QloraTrainer:
     def _setup_data_processor(self):
         if self.config["data"]["type"] == "vicuna":
             self.data_processor = VicunaDataProcessor(self.config, self.tokenizer)
+        elif self.config["data"]["type"] == "orca":
+            self.data_processor = OrcaDataProcessor(self.config, self.tokenizer)
         elif self.config["data"]["type"] == "raw_text":
             self.data_processor = RawTextDataProcessor(self.config, self.tokenizer)
         else:
