@@ -16,7 +16,7 @@ lora:
   bias: none
   task_type: CAUSAL_LM
 trainer:
-  batch_size: 1
+  batch_size: 4
   gradient_accumulation_steps: 4
   warmup_steps: 100
   num_train_epochs: 1
