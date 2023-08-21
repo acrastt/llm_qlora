@@ -1,10 +1,10 @@
 model_name: Griffin-3B
 base_model: openlm-research/open_llama_3b_v2
-model_family: llama  # if unspecified will use AutoModelForCausalLM/AutoTokenizer
-model_context_window: 2048  # if unspecified will use tokenizer.model_max_length
+model_family: llama  
+model_context_window: 2048
 data:
   type: vicuna
-  dataset: LDJnr/Puffin  # HuggingFace hub
+  dataset: LDJnr/Puffin
 lora:
   r: 8
   lora_alpha: 32
@@ -17,10 +17,10 @@ lora:
   task_type: CAUSAL_LM
 trainer:
   batch_size: 4
-  gradient_accumulation_steps: 4
+  gradient_accumulation_steps: 1
   warmup_steps: 100
   num_train_epochs: 1
-  learning_rate: 0.0001  # 2e-4
+  learning_rate: 0.0001
   logging_steps: 10
 trainer_output_dir: trainer_outputs/
 model_output_dir: models/  # model saved in {model_output_dir}/{model_name}
