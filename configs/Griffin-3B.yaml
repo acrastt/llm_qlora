@@ -12,7 +12,7 @@ lora:
   - q_proj
   - k_proj
   - v_proj
-  lora_dropout: 0.05
+  lora_dropout: 0.10
   bias: none
   task_type: CAUSAL_LM
 trainer:
@@ -20,7 +20,7 @@ trainer:
   gradient_accumulation_steps: 4
   warmup_steps: 100
   num_train_epochs: 1
-  learning_rate: 0.0002  # 2e-4
-  logging_steps: 20
+  learning_rate: 0.0001  # 2e-4
+  logging_steps: 10
 trainer_output_dir: trainer_outputs/
 model_output_dir: models/  # model saved in {model_output_dir}/{model_name}
