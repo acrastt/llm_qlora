@@ -1,14 +1,14 @@
-model_name: EverythingLM-3B-8K
+model_name: EverythingLM-3B-V2
 base_model: openlm-research/open_llama_3b_v2
-model_family: llama  # if unspecified will use AutoModelForCausalLM/AutoTokenizer
-model_context_window: 2048  # if unspecified will use tokenizer.model_max_length
+model_family: llama
+model_context_window: 2048
 data:
   type: vicuna
-  dataset: totally-not-an-llm/everything-sharegptformat-morecleaned  # HuggingFace hub
+  dataset: totally-not-an-llm/EverythingLM-data-V2-sharegpt
 lora:
   r: 8
   lora_alpha: 32
-  target_modules:  # modules for which to train lora adapters
+  target_modules:
   - q_proj
   - k_proj
   - v_proj
@@ -16,11 +16,11 @@ lora:
   bias: none
   task_type: CAUSAL_LM
 trainer:
-  batch_size: 1
+  batch_size: 4
   gradient_accumulation_steps: 4
   warmup_steps: 100
   num_train_epochs: 1
-  learning_rate: 0.0002  # 2e-4
+  learning_rate: 0.0002
   logging_steps: 20
 trainer_output_dir: trainer_outputs/
-model_output_dir: models/  # model saved in {model_output_dir}/{model_name}
+model_output_dir: models/
