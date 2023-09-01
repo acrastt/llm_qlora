@@ -33,7 +33,7 @@ class QloraTrainer:
             model = LlamaForCausalLM.from_pretrained(model_id, quantization_config=bnb_config, device_map={"":0})
         else:
             tokenizer = AutoTokenizer.from_pretrained(model_id)
-            model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config=bnb_config, device_map={"":0})
+            model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True, quantization_config=bnb_config, device_map={"":0})
 
         if not tokenizer.pad_token:
             # Add padding token if missing, e.g. for llama tokenizer
