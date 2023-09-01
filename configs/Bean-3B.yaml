@@ -1,9 +1,9 @@
-model_name: EverythingLM-3B-V3
-base_model: cerebras/btlm-3b-8k-base
-model_context_window: 8096
+model_name: Bean-3B
+base_model: openlm-research/open_llama_3b_v2
+model_context_window: 2048
 data:
   type: vicuna
-  dataset: totally-not-an-llm/EverythingLM-data-V2-sharegpt
+  dataset: 64bits/lima_vicuna_format
 lora:
   r: 8
   lora_alpha: 32
