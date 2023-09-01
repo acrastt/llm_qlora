@@ -1,7 +1,7 @@
 model_name: EverythingLM-3B-V2
-base_model: openlm-research/open_llama_3b_v2
+base_model: cerebras/btlm-3b-8k-base
 model_family: llama
-model_context_window: 2048
+model_context_window: 8096
 data:
   type: vicuna
   dataset: totally-not-an-llm/EverythingLM-data-V2-sharegpt
@@ -9,9 +9,8 @@ lora:
   r: 8
   lora_alpha: 32
   target_modules:
-  - q_proj
-  - k_proj
-  - v_proj
+  - c_attn
+  - c_proj
   lora_dropout: 0.10
   bias: none
   task_type: CAUSAL_LM
