@@ -1,4 +1,4 @@
-model_name: EverythingLM-3B-V2
+model_name: EverythingLM-3B-V3
 base_model: cerebras/btlm-3b-8k-base
 model_family: llama
 model_context_window: 8096
