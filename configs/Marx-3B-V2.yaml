@@ -3,7 +3,7 @@ base_model: openlm-research/open_llama_3b_v2
 model_context_window: 2048
 data:
   type: vicuna
-  dataset: ../EverythingLMV3-ShareGPT.json
+  dataset: acrastt/EverythingLM-V3-ShareGPT
 lora:
   r: 64
   lora_alpha: 16
