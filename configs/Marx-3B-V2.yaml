@@ -1,12 +1,12 @@
-model_name: Codu-Mini-3B
+model_name: Marx-3B-V2
 base_model: openlm-research/open_llama_3b_v2
-model_context_window: 4096
+model_context_window: 2048
 data:
-  type: text
-  dataset: rombodawg/LMCT_V3_MINI_1000_guanaco_format
+  type: vicuna
+  dataset: ../EverythingLMV3-ShareGPT.json
 lora:
-  r: 16
-  lora_alpha: 8
+  r: 64
+  lora_alpha: 16
   target_modules:
   - gate_proj
   - down_proj
@@ -15,16 +15,15 @@ lora:
   - v_proj
   - k_proj
   - o_proj
-  - lm_head
   lora_dropout: 0.05
   bias: none
   task_type: CAUSAL_LM
 trainer:
   batch_size: 4
   gradient_accumulation_steps: 4
-  warmup_steps: 100
-  num_train_epochs: 3
-  learning_rate: 0.001
-  logging_steps: 100
+  warmup_steps: 30
+  num_train_epochs: 2
+  learning_rate: 0.0001
+  logging_steps: 1
 trainer_output_dir: trainer_outputs/
 model_output_dir: models/
