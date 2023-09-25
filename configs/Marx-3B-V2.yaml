@@ -1,5 +1,6 @@
 model_name: Marx-3B-V2
 base_model: openlm-research/open_llama_3b_v2
+model_family: llama
 model_context_window: 2048
 data:
   type: vicuna
