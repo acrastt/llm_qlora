@@ -1,7 +1,6 @@
-model_name: Marx-3B-V2
-base_model: openlm-research/open_llama_3b_v2
-model_family: llama
-model_context_window: 2048
+model_name: Marx-3B-V3
+base_model: stabilityai/stablelm-3b-4e1t
+model_context_window: 4096
 data:
   type: vicuna
   dataset: acrastt/EverythingLM-V3-ShareGPT
@@ -16,6 +15,7 @@ lora:
   - v_proj
   - k_proj
   - o_proj
+  - lm_head
   lora_dropout: 0.05
   bias: none
   task_type: CAUSAL_LM
