@@ -3,7 +3,7 @@ base_model: stabilityai/stablelm-3b-4e1t
 model_context_window: 4096
 data:
   type: vicuna
-  dataset: acrastt/EverythingLM-V3-ShareGPT
+  dataset: CollectiveCognition/chats-data-2023-09-27
 lora:
   r: 64
   lora_alpha: 16
@@ -16,14 +16,14 @@ lora:
   - k_proj
   - o_proj
   - lm_head
-  lora_dropout: 0.05
+  lora_dropout: 0.10
   bias: none
   task_type: CAUSAL_LM
 trainer:
-  batch_size: 4
-  gradient_accumulation_steps: 4
-  warmup_steps: 30
-  num_train_epochs: 2
+  batch_size: 1
+  gradient_accumulation_steps: 1
+  warmup_steps: 50
+  num_train_epochs: 5
   learning_rate: 0.0001
   logging_steps: 1
 trainer_output_dir: trainer_outputs/
