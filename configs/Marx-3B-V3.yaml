@@ -23,7 +23,7 @@ trainer:
   batch_size: 1
   gradient_accumulation_steps: 1
   warmup_steps: 50
-  num_train_epochs: 5
+  num_train_epochs: 3
   learning_rate: 0.0001
   logging_steps: 1
 trainer_output_dir: trainer_outputs/
