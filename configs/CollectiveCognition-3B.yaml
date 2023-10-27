@@ -1,4 +1,4 @@
-model_name: Marx-3B-V3
+model_name: CollectiveCognition-3B
 base_model: stabilityai/stablelm-3b-4e1t
 model_context_window: 4096
 data:
