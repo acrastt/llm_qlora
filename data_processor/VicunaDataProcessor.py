@@ -32,15 +32,15 @@ class VicunaDataProcessor(DataProcessor):
             value = turn["value"]
 
             if entity == "human":
-                convo_text += "### HUMAN:\n"
+                convo_text += "USER: "
                 end_token = ""
             elif entity == "gpt":
-                convo_text += "### RESPONSE:\n"
+                convo_text += "ASSISTANT: "
                 end_token = eos_token  # LLM should stop its output after the response
             else:
                 print(f"WARNING: uknown entity {entity}")
-                convo_text += f"### {entity.upper()}:\n"
+                convo_text += f"{entity.upper()}: "
                 end_token = ""
 
-            convo_text += value + end_token + "\n\n"
+            convo_text += value + end_token + "\n"
         return convo_text
